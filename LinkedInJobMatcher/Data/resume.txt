@@ -1,0 +1,71 @@
+GAURAV DEOPA
+Full-Stack Engineer - .NET | Azure | React | SQL Server & PL/SQL | Media & OTT Platforms
+Pune, Maharashtra | +91 7983540549 | gauravdeopa4@gmail.com | LinkedIn | Github
+
+
+SUMMARY
+
+Software Engineer with 4+ years of experience building scheduling, licensing, and metadata management systems for global media and OTT platforms using .NET, ASP.NET Core, C#, SQL Server, Oracle PL/SQL, and Azure. Microsoft Certified: AZ-204 and AI-200.
+
+SKILLS
+
+Backend & Programming: C#, ASP.NET Core Web API, WCF, Windows Services, REST API Design, Microservices, JWT Authentication, Role-Based Access Control (RBAC)
+Databases: SQL Server (Advanced T-SQL, Indexing, Performance Tuning), Oracle PL/SQL (Packages, Procedures, Functions, Query Optimization), SSRS (Report Design & Deployment)
+Cloud & DevOps: Microsoft Azure (AZ-204 & AI-200 Certified), Azure DevOps (CI/CD Pipelines, Build & Release Management), Application Deployment & Monitoring, Docker
+Frontend: WPF, React.js, JavaScript, HTML/CSS
+AI & Integration: Retrieval-Augmented Generation (RAG), MCP, Azure AI Language / NLP, Agentic Workflow Design, Third-Party API & System Integrations
+Domain: Content Scheduling, Contract & Licensing Management, Media Metadata Workflows, OTT & Linear TV Operations
+Other: Python, Agile/Scrum, Root-Cause Analysis, Production Support & System Stability, Unit Testing, xUnit, NUnit, Git, Swagger/OpenAPI
+
+PROFESSIONAL EXPERIENCE
+
+Nihilent Limited | Pune, Maharashtra
+Senior Software Engineer	May 2022 - Present
+? Designed and built scheduling, contract, and media management applications and services using WPF, WCF, and .NET Core Web API for enterprise media and OTT platforms handling content scheduling, licensing, and metadata workflows across 30+ countries.
+? Implemented complex business logic for content lifecycle, territory restrictions, and scheduling rules, reducing manual effort by ~50%.
+? Developed and optimized SQL Server and Oracle PL/SQL procedures, functions, and packages, reduced a long running query execution time by up to 80%.
+? Built background processing solutions using .NET Core hosted services and Windows Services for file handling, data synchronization, and batch processing, processing 10,000+ records daily.
+? Implemented JWT-based authentication and role-based access control (RBAC) for secure API access across applications.
+? Resolved 50+ production issues through root-cause analysis, improving system stability, and reliability.
+? Delivered knowledge-transfer (KT) sessions to junior engineers, accelerating onboarding onto complex scheduling, licensing, and metadata systems, created the work breakdown structure (WBS), assigned and tracked tasks across the team, and delivered within the committed timeline.
+
+KEY PROJECTS
+
+
+Content Scheduling & Media Management Platform (Synergy - MultiChoice)	2023 - Present
+Enterprise platform managing content licensing, scheduling, metadata, and OTT/linear TV operations across multiple regions.
+? Developed backend services using .NET Core Web API for scheduling workflows, metadata updates, and cross-system integrations.
+? Designed APIs supporting real-time data exchange between OTT platforms and downstream systems.
+? Implemented complex scheduling logic driven by licensing rules, territory restrictions, and business workflows.
+? Built and optimized Oracle PL/SQL packages for financial calculations and scheduling operations.
+? Improved performance of critical processes, reducing execution time by up to 40%, and boosting system responsiveness.
+
+Advertisement Scheduling & Campaign Management System	2022 - 2023
+Core-level ad and promo scheduling system for broadcast channels.
+? Developed services for ad scheduling, campaign management, and time-slot allocation.
+? Designed APIs for integration with external ad delivery and tracking systems.
+? Built database-driven workflows to manage schedule releases and updates, cutting manual intervention through automation and reducing processing time by 50%.
+Frontend Modernization POC - WPF to React	2025
+Proof-of-concept initiative to modernize the title metadata capture and update interface.
+? Migrated a legacy WPF and WCF-based metadata capture interface to a modern browser-based React front end on an ASP.NET Core Web API backend, improving usability and reducing maintenance overhead.
+? Leveraged React's component-based architecture and asynchronous data fetching to eliminate full-screen reloads, delivering a faster, more responsive experience.
+ HACKATHONS	
+Snowflake Hackathon - Invoice Ingestion & Statistics Dashboard	2024
+? Built an end-to-end invoice ingestion and analytics pipeline using Snowflake Snowpark for data processing, Streamlit for the interactive dashboard UI, and Azure Blob Storage for source document storage.
+? Automated extraction of key invoice fields (vendor, amount, date, line items) from uploaded documents, removing manual data entry from the ingestion process, designed visualizations surfacing spend trends and invoice statistics to support faster financial review.
+HackerRank Orchestrate Hackathon - AI Agentic Claims Verification System 2026
+? Designed and built a multi-step AI agentic workflow to verify damage claims, orchestrating several automated checks rather than a single model call.
+? Implemented minimum evidence requirement checks so the system could automatically flag incomplete claims for follow- up rather than approving or rejecting based on insufficient data.
+? Applied Retrieval-Augmented Generation (RAG) and Model Context Protocol (MCP) patterns to ground the agent's decisions in claim policy and historical case data.
+
+ CERTIFICATIONS	
+? Microsoft Certified: Azure Developer Associate (AZ-204)
+? Microsoft Certified: Azure AI Cloud Developer Associate (AI-200)
+? HackerRank SQL (Advanced)
+
+ EDUCATION	
+BCA - Kumaon University, Nainital, Uttarakhand
+May 2022 | First Division with Honors | CGPA: 7.9
+
+ AWARDS	
+? Nihilent - Star Performer of the Quarter, December 2024
