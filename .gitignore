@@ -6,3 +6,6 @@
 /.vs
 /LinkedInJobMatcher/bin
 /LinkedInJobMatcher/obj
+*.db
+*.db-shm
+*.db-wal
