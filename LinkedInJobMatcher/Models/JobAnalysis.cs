@@ -12,5 +12,7 @@ namespace LinkedInJobMatcher.Models
 
 
         public string? Reason { get; set; }
+
+        public List<string> Emails { get; set; } = new();
     }
 }

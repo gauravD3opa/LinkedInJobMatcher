@@ -19,6 +19,11 @@ namespace LinkedInJobMatcher.Services
                 @"[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+",
                 RegexOptions.Compiled);
 
+        private static bool IsValidEmail(string email)
+        {
+            return EmailRegex.IsMatch(email);
+        }
+
         public JobProcessor(OllamaService ollamaService, GmailDraftService gmailDraftService)
         {
             _ollamaService = ollamaService;
@@ -57,6 +62,7 @@ namespace LinkedInJobMatcher.Services
             int failedCount = 0;
 
             var draftLog = new List<DraftLogEntry>();
+            var jobsWithoutEmail = new List<JobWithoutEmail>();
             var seenThisRun = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
             foreach (var post in posts)
@@ -89,15 +95,40 @@ namespace LinkedInJobMatcher.Services
                     if (!analysis.IsRelevant)
                         continue;
 
-                    var emails = EmailRegex
+                    var aiEmails = analysis.Emails?
+                                                .Where(e => !string.IsNullOrWhiteSpace(e))
+                                                .Select(e => e.Trim())
+                                                .ToList()
+                                                ?? new List<string>();
+
+                    var regexEmails = EmailRegex
                         .Matches(post.Content)
-                        .Select(x => x.Value)
+                        .Select(x => x.Value.Trim())
+                        .ToList();
+
+                    var emails = aiEmails
+                        .Concat(regexEmails)
+                        .Where(IsValidEmail)
                         .Distinct(StringComparer.OrdinalIgnoreCase)
                         .ToList();
+
+                    Console.WriteLine(
+                        $"AI emails: {aiEmails.Count}, " +
+                        $"Regex emails: {regexEmails.Count}, " +
+                        $"Final emails: {emails.Count}");
 
                     if (emails.Count == 0)
                     {
                         Console.WriteLine("Relevant job, but no email found.");
+
+                        jobsWithoutEmail.Add(new JobWithoutEmail
+                        {
+                            PostId = post.Id,
+                            LinkedinUrl = post.LinkedinUrl,
+                            AuthorName = post.Author?.Name,
+                            Reason = analysis.Reason
+                        });
+
                         continue;
                     }
 
@@ -184,12 +215,32 @@ namespace LinkedInJobMatcher.Services
 
             await File.WriteAllTextAsync(draftLogPath, logJson);
 
+
+
             Console.WriteLine();
             Console.WriteLine(
                 $"Finished. {matchCount} matching posts, {sentCount} drafts created, " +
                 $"{skippedDuplicateCount} skipped (duplicates), {failedCount} failed.");
             Console.WriteLine($"Draft log written to {draftLogPath}");
             Console.WriteLine($"Total unique recruiters contacted (all-time): {sentStore.Count}");
+
+            var jobsWithoutEmailPath = Path.Combine(
+            Path.GetDirectoryName(draftLogPath) ?? ".",
+            "jobs_without_email.json");
+
+            var jobsWithoutEmailJson = JsonSerializer.Serialize(
+                jobsWithoutEmail,
+                new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+
+            await File.WriteAllTextAsync(
+                jobsWithoutEmailPath,
+                jobsWithoutEmailJson);
+
+            Console.WriteLine(
+                $"Jobs without email written to {jobsWithoutEmailPath}");
         }
     }
 }

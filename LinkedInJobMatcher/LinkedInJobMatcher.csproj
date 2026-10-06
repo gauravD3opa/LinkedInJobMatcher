@@ -9,15 +9,11 @@
 
   <ItemGroup>
     <None Remove="appsettings.Development.json" />
-    <None Remove="Data\dataset_linkedin-post-search_2026-08-25_04-57-32-767.json" />
     <None Remove="Data\resume.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="appsettings.Development.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\dataset_linkedin-post-search_2026-08-25_04-57-32-767.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\resume.txt">
@@ -33,6 +29,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.11" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
     <PackageReference Include="ModelContextProtocol" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11" />
   </ItemGroup>
 
 </Project>

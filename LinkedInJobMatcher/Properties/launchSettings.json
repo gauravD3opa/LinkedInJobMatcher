@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LinkedInJobMatcher": {
+      "commandName": "Project",
+      "commandLineArgs": "send"
+    }
+  }
+}

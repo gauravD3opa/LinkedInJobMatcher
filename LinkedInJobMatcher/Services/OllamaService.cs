@@ -28,7 +28,7 @@ namespace LinkedInJobMatcher.Services
         {
 
             var prompt = """
-You are a strict job matching system.
+You are a strict job matching and email extraction system.
 
 Compare the candidate's resume against the LinkedIn job post.
 
@@ -86,40 +86,48 @@ return false.
 3. EXPERIENCE
 ========================================
 
-Experience level is IMPORTANT.
-
 Compare the experience required by the job with the candidate's
 experience in the resume.
 
-Examples:
+Do NOT assume experience that is not present in the resume.
 
-- If the job requires 5+ years and the candidate has 6 years,
-  this is a good experience match.
-
-- If the job requires 3-5 years and the candidate has 5 years,
-  this is a good experience match.
-
-- If the job requires 8+ years and the candidate has only 3 years,
-  this is NOT a match.
-
-- If the job is Senior/Lead/Principal and the candidate's
-  experience is clearly much lower, return false.
-
-- If the job is Junior/Mid-level and the candidate has significantly
-  more experience, it can still be considered relevant.
-
-- If the job explicitly requires experience in a specific domain
-  that the candidate does not have, consider this carefully.
-
-- If the job's experience requirement is missing, use the candidate's
-  overall experience and the seniority of the role to determine
-  whether it is reasonable.
-
-Do NOT assume that the candidate has experience that is not present
-in the resume.
+If the job clearly requires substantially more experience,
+return false.
 
 ========================================
-4. OVERALL DECISION
+4. EMAIL EXTRACTION
+========================================
+
+Extract ALL email addresses that appear in the LinkedIn job post.
+
+Look specifically for:
+
+- Recruiter emails
+- HR emails
+- Hiring emails
+- Recruitment team emails
+- Application emails
+- Company career emails
+
+Examples:
+
+hr@company.com
+recruiter@company.com
+jobs@company.com
+careers@company.com
+
+IMPORTANT:
+
+- Only return emails that actually appear in the job post.
+- Do NOT invent or guess an email address.
+- Do NOT generate an email based on the company domain.
+- Do NOT extract an email from the candidate resume.
+- If there are no emails in the job post, return an empty array.
+- Remove duplicate emails.
+- Return the exact email address found in the post.
+
+========================================
+5. OVERALL DECISION
 ========================================
 
 Return true ONLY when:
@@ -135,7 +143,9 @@ If you are not sure, return false.
 
 DO NOT GUESS.
 
-When information is missing or ambiguous, prefer false.
+========================================
+OUTPUT
+========================================
 
 Return ONLY valid JSON.
 
@@ -143,7 +153,19 @@ Required format:
 
 {
     "isRelevant": false,
-    "reason": "Short explanation"
+    "reason": "Short explanation",
+    "emails": []
+}
+
+Example:
+
+{
+    "isRelevant": true,
+    "reason": "India-based .NET backend role requiring 4+ years of experience.",
+    "emails": [
+        "recruiter@company.com",
+        "jobs@company.com"
+    ]
 }
 """;
 
